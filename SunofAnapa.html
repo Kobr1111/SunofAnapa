@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Солнце Анапы</title>
+    <style>
+        body {
+            background-color: #fff79b; /* Цвет фона, если изображение не загрузится */
+            background-image: url('https://iimg.su/s/18/BJ8BHuFu9ltS6Gmk7cVdFYih5hjSmByepmihCwlI.jpg'); /* URL фона */
+            background-size: cover; /* Изображение растягивается на весь экран */
+            background-position: center; /* Центрируем изображение */
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Контейнер для основного контента */
+        .content {
+            background-color: white; /* Белый фон для контента */
+            margin: 50px auto; /* Отступы от краев страницы */
+            padding: 20px; /* Внутренние отступы */
+            width: 80%; /* Ширина контейнера */
+            max-width: 1200px; /* Максимальная ширина */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень вокруг контейнера */
+            border-radius: 10px; /* Скругленные углы */
+            border: 6px solid #8b624a; /* Коричневая рамка вокруг белого фона */
+        }
+
+        h1 {
+            text-align: center;
+            color: #8b624a;
+        }
+
+        p {
+            text-align: center;
+            font-size: 28px;
+            color: #8b624a;
+        }
+
+        /* Настройки для изображений */
+        img {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            height: auto;
+        }
+
+        iframe {
+            display: block;
+            margin: 20px auto;
+        }
+
+        /* Смещение второго iframe */
+        .shift-right {
+            transform: translateX(117px); /* Смещение вправо на 20px */
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1><b><font color="#8b624a">Солнце Анапы</font></b></h1>
+        <img src="https://i.postimg.cc/HnCLwtkk/lzh-N3-Nl-O2-Ifo.jpg" alt="Изображение">
+        <p><font color="#8b624a">Привет!) Очередной прекрасный день, не правда ли?:)</font></p>
+        <iframe 
+            src="https://s.prtv.su/informers/weather_openweathermap/weather_5.php?transpar=&font_family=Open Sans&type_img=img_10_svg&img_tip=svg&fon_table=%23fff799&font_text=%2300f&font_tempo=%23fff100&city=%D0%90%D0%BD%D0%B0%D0%BF%D0%B0" 
+            frameborder="0" 
+            width="500px" 
+            height="300px" 
+            style="overflow:hidden;">
+        </iframe>
+        <p><font color="#8b624a">Теперь, моречко каждую минуту будет с Вами &#128522;&#127754;&#128044;</font></p>
+        <iframe 
+            class="shift-right"
+            src="http://worldseatemp.com/ru/i/423/c/240x86/" 
+            scrolling="no" 
+            frameborder="0" 
+            style="width: 500px; height: 300px; border: 0;">
+        </iframe>
+    </div>
+</body>
+</html>
