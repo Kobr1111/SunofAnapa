@@ -104,15 +104,23 @@
 
         #modal-content {
             display: flex;
+            flex-direction: column;
             align-items: center;
             padding: 20px;
             border-radius: 10px;
         }
 
         #modal img {
-            width: 150px;
+            width: 300px; /* Increased size for a larger image */
             height: auto;
-            margin-right: 20px;
+            margin-bottom: 20px; /* Added space below the image */
+        }
+
+        #modal-text {
+            text-align: center;
+            font-size: 18px;
+            max-width: 800px;
+            line-height: 1.5;
         }
 
         #modal-close {
@@ -149,6 +157,10 @@
                 height: auto;
                 min-height: 400px;
             }
+
+            #modal img {
+                width: 200px; /* Adjust image size for mobile */
+            }
         }
     </style>
 </head>
@@ -157,7 +169,7 @@
         <span id="modal-close" onclick="closeModal()">&#10006;</span>
         <div id="modal-content">
             <img src="https://iimg.su/s/05/q5iqgv5OVIL2hnR17x6muDF9BG3Fv6gtF7hajIQp.jpg" alt="Логотип">
-            <div>
+            <div id="modal-text">
                 <strong>Здравствуйте&#128578;! Благодарим Вас за покупку изделия ручной работы в нашем магазине!</strong><br><br>
                 Ждем вас снова по адресу: г-к Анапа, улица им. Горького, Арт-Авеню, 9 стол.<br><br>
                 По выходным (В Новогодние праздники, а также с 1 мая мы с Вами ежедневно&#128079;)!<br><br>
