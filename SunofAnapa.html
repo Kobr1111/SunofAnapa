@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+<!-- Yandex.RTB -->
+<script>window.yaContextCb=window.yaContextCb||[]</script>
+<script src="https://yandex.ru/ads/system/context.js" async></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Солнце Анапы</title>
@@ -96,6 +99,7 @@
             z-index: 1000;
             font-size: 18px;
             padding: 20px;
+            box-sizing: border-box;
         }
 
         #modal-content {
@@ -113,12 +117,38 @@
 
         #modal-close {
             position: absolute;
-            top: 10px;
-            right: 20px;
-            font-size: 30px;
+            top: 15px;
+            right: 15px;
+            font-size: 40px;
             font-weight: bold;
             cursor: pointer;
             color: black;
+            z-index: 1001;
+            user-select: none;
+        }
+
+        /* Responsive styles for mobile devices */
+        @media (max-width: 768px) {
+            #modal-close {
+                font-size: 50px;
+                right: 10px;
+                top: 10px;
+            }
+            p {
+                font-size: 18px;
+            }
+
+            iframe {
+                max-width: 90%;
+                height: auto;
+                min-height: 200px;
+            }
+
+            .large-iframe {
+                max-width: 100%;
+                height: auto;
+                min-height: 400px;
+            }
         }
     </style>
 </head>
@@ -154,5 +184,15 @@
             document.getElementById('modal').style.display = 'none';
         }
     </script>
+<!-- Yandex.RTB R-A-13520943-1 -->
+<div id="yandex_rtb_R-A-13520943-1"></div>
+<script>
+window.yaContextCb.push(() => {
+    Ya.Context.AdvManager.render({
+        "blockId": "R-A-13520943-1",
+        "renderTo": "yandex_rtb_R-A-13520943-1"
+    })
+})
+</script>
 </body>
 </html>
