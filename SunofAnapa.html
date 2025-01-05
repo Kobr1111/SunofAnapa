@@ -1,19 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<!-- Yandex.RTB -->
-<script>window.yaContextCb=window.yaContextCb||[]</script>
-<script src="https://yandex.ru/ads/system/context.js" async></script>
-<!-- Yandex.RTB R-A-13520943-1 -->
-<div id="yandex_rtb_R-A-13520943-1"></div>
-<script>
-window.yaContextCb.push(() => {
-    Ya.Context.AdvManager.render({
-        "blockId": "R-A-13520943-1",
-        "renderTo": "yandex_rtb_R-A-13520943-1"
-    })
-})
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Солнце Анапы</title>
@@ -97,27 +84,9 @@ window.yaContextCb.push(() => {
             height: 600px;
         }
 
-        @media (max-width: 768px) {
-            p {
-                font-size: 18px;
-            }
-
-            iframe {
-                max-width: 90%;
-                height: auto;
-                min-height: 200px;
-            }
-
-            .large-iframe {
-                max-width: 100%;
-                height: auto;
-                min-height: 400px;
-            }
-        }
-
         /* Modal Styles */
         #modal {
-            display: block; /* Change to block to automatically show */
+            display: block;
             position: fixed;
             top: 0;
             left: 0;
@@ -126,7 +95,6 @@ window.yaContextCb.push(() => {
             background-color: rgba(255, 247, 155, 0.95);
             z-index: 1000;
             font-size: 18px;
-            color: black;
             padding: 20px;
         }
 
@@ -156,7 +124,7 @@ window.yaContextCb.push(() => {
 </head>
 <body>
     <div id="modal">
-        <span id="modal-close" onclick="closeModal()">×</span>
+        <span id="modal-close" onclick="closeModal()">&#10006;</span>
         <div id="modal-content">
             <img src="https://iimg.su/s/05/q5iqgv5OVIL2hnR17x6muDF9BG3Fv6gtF7hajIQp.jpg" alt="Логотип">
             <div>
