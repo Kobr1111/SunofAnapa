@@ -114,9 +114,60 @@ window.yaContextCb.push(() => {
                 min-height: 400px;
             }
         }
+
+        /* Modal Styles */
+        #modal {
+            display: block; /* Change to block to automatically show */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 247, 155, 0.95);
+            z-index: 1000;
+            font-size: 18px;
+            color: black;
+            padding: 20px;
+        }
+
+        #modal-content {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        #modal img {
+            width: 150px;
+            height: auto;
+            margin-right: 20px;
+        }
+
+        #modal-close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            color: black;
+        }
     </style>
 </head>
 <body>
+    <div id="modal">
+        <span id="modal-close" onclick="closeModal()">×</span>
+        <div id="modal-content">
+            <img src="https://iimg.su/i/mSXf9" alt="Логотип">
+            <div>
+                <strong>Здравствуйте&#128578;! Благодарим Вас за покупку изделия ручной работы в нашем магазине!</strong><br><br>
+                Ждем вас снова по адресу: г-к Анапа, улица им. Горького, Арт-Авеню, 9 стол.<br><br>
+                По выходным (В Новогодние праздники, а также с 1 мая мы с Вами ежедневно&#128079;)!<br><br>
+                Хорошего Вам дня!&#128578;
+            </div>
+        </div>
+    </div>
+
     <div class="button-container">
         <a href="https://yandex.ru/maps/?from=mapframe&ll=37.411284%2C44.830048&mode=usermaps&source=mapframe&um=constructor%3A4e9bc2d183686bb74bc978d70fe3469d1a0ee887ebc44f46b8350bfa58e89151&utm_source=mapframe&z=11" class="button" target="_blank">Твой персональный гид по Анапе&#127757;</a>
         <a href="https://kudepstasochi.ru/anapa-veb-kamery-onlajn" class="button" target="_blank">Для тех, кто скучает&#10024;</a>
@@ -129,5 +180,11 @@ window.yaContextCb.push(() => {
         <p>Теперь, моречко каждую минуту будет с Вами &#128522;&#127754;&#128044;</p>
         <iframe class="large-iframe" src="https://primpogoda.ru/weather/anapa/.more"></iframe>
     </div>
+
+    <script>
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
