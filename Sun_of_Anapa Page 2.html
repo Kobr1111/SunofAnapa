@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -20,21 +20,21 @@
             background-image: url('https://iimg.su/s/06/hRZbKAAaDXtKxovQZvChDYMLgwY28nwPXIpHRA2z.jpg');
             background-size: cover;
             background-position: center;
-            filter: brightness(0.5); /* Затемнение фона */
+            filter: brightness(0.5);
             z-index: -1;
         }
 
         header {
             display: flex;
-            justify-content: center; /* Центрирование содержимого */
+            justify-content: center;
             padding: 10px 0;
         }
 
         header img {
-            width: 75%; /* Изменение ширины изображения */
+            width: 75%;
             height: auto;
-            border: 6px solid #8b624a; /* Рамка вокруг картинки */
-            border-radius: 10px; /* Сглаживание углов рамки */
+            border: 6px solid #8b624a;
+            border-radius: 10px;
         }
 
         .button-container {
@@ -65,18 +65,19 @@
             max-width: 1200px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
-            border: 6px solid #8b624a; /* Цвет рамки */
+            border: 6px solid #8b624a;
             text-align: center;
         }
 
         h1 {
-            text-align: center;
             color: #8b624a;
+            cursor: pointer;
         }
 
         h2 {
             color: #8b624a;
-            margin-top: 10px;
+            cursor: pointer;
+            text-decoration: underline;
         }
 
         iframe {
@@ -85,6 +86,7 @@
             height: 450px;
             border: none;
             margin-top: 20px;
+            display: none;
         }
 
         p {
@@ -104,34 +106,41 @@
     </div>
     <div class="content">
         <h1>Анапа в прямом эфире&#127909;</h1>
-        <br>
-        <h2>Малая бухта (Серфинг-клуб)</h2>
-        <iframe src="https://open.ivideon.com/embed/v2/?server=100-LkmmhBKUBRFv4Y8rbSeIKc&camera=0&width=&height=&lang=ru"></iframe>
-        <br>
-        <h2>Вид на набережную с санатория "Патио-Анапа"</h2>
-        <iframe src="https://open.ivideon.com/embed/v3/?server=100-zYcA2QLRcue22L5sMqSUul&camera=0&width=1920&height=1080&lang=ru&ap=&noibw="></iframe>
-        <br>
-        <h2>Пляж в ст.Голубицкая</h2>
-        <iframe src="https://open.ivideon.com/embed/v2/?server=100-P8RYttzrgQ5Cpkb95JvVTI&camera=0&width=&height=&lang=ru"></iframe>
-        <h2>ст.Голубицкая 2</h2>
-        <iframe src="https://open.ivideon.com/embed/v2/?server=100-JJW9rzU1EPAtNr2ANVevSr&camera=0&width=&height=&lang=ru"></iframe>
-        <br>
-        <h2>Анапа, пляж санатория "Родник" (работает только в сезон)</h2>
-        <iframe src="https://ipeye.ru/ipeye_service/api/iframe.php?iframe_player=1&dev=GUJTEML1PGMQWpPwiPu3x0paGBGIlO&autoplay=0&archive=1"></iframe>
-        <br>
-        <h2>Камера "Сенной", вид на Таманский залив</h2>
-        <iframe src="https://open.ivideon.com/embed/v2/?server=100-roLUgIvPCUCAxfBIN6VOq8&camera=0&width=1920&height=1080&lang=ru&ap=&noibw="></iframe>
-        <br>
-        <h2>Городская площадь возле ДК "Родина"</h2>
-        <iframe src="http://85.172.17.94:9999/player/?key=q1322qefasfrttg&cam=7d470769-605d-4110-8ea5-6114ddd3b437"></iframe>
-        <br>
-        <h2>Ул. им.Горького</h2>
-        <iframe src="http://webcam.anapa-official.ru:9999/player/?key=q1322qefasfrttg&cam=efb90850-93df-4bbb-ac51-9663342ee5b4"></iframe>
-        <br>
-        <br>
-        <h2>Городская камера, перекресток ул.Красноармейской и ул.Гоголя</h2>
-        <iframe src="http://webcam.anapa-official.ru:9999/player/?key=q1322qefasfrttg&cam=965aa513-a27d-4078-92b4-3ff104bc0622"></iframe>
+        
+        <h2 onclick="toggleCamera('cam1')">Малая бухта (Серфинг-клуб)&#127909;</h2>
+        <iframe id="cam1" src="https://open.ivideon.com/embed/v2/?server=100-LkmmhBKUBRFv4Y8rbSeIKc&camera=0&lang=ru"></iframe>
+        
+        <h2 onclick="toggleCamera('cam2')">Вид на набережную с санатория "Патио-Анапа"&#127909;</h2>
+        <iframe id="cam2" src="https://open.ivideon.com/embed/v3/?server=100-zYcA2QLRcue22L5sMqSUul&camera=0&lang=ru"></iframe>
+        
+        <h2 onclick="toggleCamera('cam3')">Пляж в ст.Голубицкая&#127909;</h2>
+        <iframe id="cam3" src="https://open.ivideon.com/embed/v2/?server=100-P8RYttzrgQ5Cpkb95JvVTI&camera=0&lang=ru"></iframe>
+        
+        <h2 onclick="toggleCamera('cam4')">ст.Голубицкая 2&#127909;</h2>
+        <iframe id="cam4" src="https://open.ivideon.com/embed/v2/?server=100-JJW9rzU1EPAtNr2ANVevSr&camera=0&lang=ru"></iframe>
+        
+        <h2 onclick="toggleCamera('cam5')">Анапа, пляж санатория "Родник"&#127909; (работает только в сезон)</h2>
+        <iframe id="cam5" src="https://ipeye.ru/ipeye_service/api/iframe.php?iframe_player=1&dev=GUJTEML1PGMQWpPwiPu3x0paGBGIlO"></iframe>
+        
+        <h2 onclick="toggleCamera('cam6')">Камера "Сенной", вид на Таманский залив&#127909;</h2>
+        <iframe id="cam6" src="https://open.ivideon.com/embed/v2/?server=100-roLUgIvPCUCAxfBIN6VOq8&camera=0&lang=ru"></iframe>
+        
+        <h2 onclick="toggleCamera('cam7')">Городская площадь возле ДК "Родина"&#127909;</h2>
+        <iframe id="cam7" src="http://85.172.17.94:9999/player/?key=q1322qefasfrttg&cam=7d470769-605d-4110-8ea5-6114ddd3b437"></iframe>
+        
+        <h2 onclick="toggleCamera('cam8')">Ул. им.Горького&#127909;</h2>
+        <iframe id="cam8" src="http://webcam.anapa-official.ru:9999/player/?key=q1322qefasfrttg&cam=efb90850-93df-4bbb-ac51-9663342ee5b4"></iframe>
+        
+        <h2 onclick="toggleCamera('cam9')">Городская камера, перекресток ул.Красноармейской и ул.Гоголя&#127909;</h2>
+        <iframe id="cam9" src="http://webcam.anapa-official.ru:9999/player/?key=q1322qefasfrttg&cam=965aa513-a27d-4078-92b4-3ff104bc0622"></iframe>
     </div>
+
+    <script>
+        function toggleCamera(id) {
+            const iframe = document.getElementById(id);
+            iframe.style.display = iframe.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
 </body>
 </html>
 
