@@ -9,6 +9,9 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .background {
@@ -27,12 +30,14 @@
         header {
             display: flex;
             justify-content: center;
+            width: 75%; /* Рамка контента */
+            margin: 0 auto; /* Центрирование */
             padding: 10px 0;
         }
 
         header img {
-            width: 75%;
-            height: auto;
+            width: 100%; /* Устанавливаем ширину изображения на 100% от ширины родительского элемента */
+            height: auto; /* Высота будет рассчитываться автоматически для сохранения пропорций */
             border: 6px solid #8b624a;
             border-radius: 10px;
         }
@@ -61,23 +66,61 @@
             background-color: white;
             margin: 20px auto;
             padding: 20px;
-            width: 90%;
-            max-width: 1200px;
+            width: 75%;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
             border: 6px solid #8b624a;
             text-align: center;
         }
 
-        h1 {
+        .content h2 {
+            cursor: pointer;
+            text-decoration: underline;
             color: #8b624a;
+        }
+
+        .question-box {
+            width: 25%;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.95);
+            border: 3px solid #8b624a;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-size: 16px;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 2;
+        }
+
+        .question-box h2 {
+            margin-top: 0;
+            color: #8b624a;
+        }
+
+        .question-box textarea {
+            width: 100%;
+            height: 50px;
+            margin: 10px 0;
+            padding: 5px;
+            font-size: 14px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .question-box button {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            color: white;
+            background-color: #8b624a;
+            border: none;
+            border-radius: 5px;
             cursor: pointer;
         }
 
-        h2 {
-            color: #8b624a;
-            cursor: pointer;
-            text-decoration: underline;
+        .question-box button:hover {
+            background-color: darkred;
         }
 
         iframe {
@@ -87,12 +130,6 @@
             border: none;
             margin-top: 20px;
             display: none;
-        }
-
-        p {
-            text-align: center;
-            font-size: 20px;
-            color: #8b624a;
         }
     </style>
 </head>
@@ -106,7 +143,6 @@
     </div>
     <div class="content">
         <h1>Анапа в прямом эфире&#127909;</h1>
-        
         <h2 onclick="toggleCamera('cam1')">Малая бухта (Серфинг-клуб)&#127909;</h2>
         <iframe id="cam1" src="https://open.ivideon.com/embed/v2/?server=100-LkmmhBKUBRFv4Y8rbSeIKc&camera=0&lang=ru"></iframe>
         
@@ -131,18 +167,67 @@
         <h2 onclick="toggleCamera('cam8')">Ул. им.Горького&#127909;</h2>
         <iframe id="cam8" src="http://webcam.anapa-official.ru:9999/player/?key=q1322qefasfrttg&cam=efb90850-93df-4bbb-ac51-9663342ee5b4"></iframe>
         
-        <h2 onclick="toggleCamera('cam9')">Городская камера, перекресток ул.Красноармейской и ул.Горького&#127909;</h2>
+        <h2 onclick="toggleCamera('cam9')">Городская камера, перекресток ул.Красноармейской и ул.Гоголя&#127909;</h2>
         <iframe id="cam9" src="http://webcam.anapa-official.ru:9999/player/?key=q1322qefasfrttg&cam=965aa513-a27d-4078-92b4-3ff104bc0622"></iframe>
     </div>
 
+    <div class="question-box" id="questionBox">
+        <h2>Вопрос:</h2>
+        <p id="questionText"></p>
+        <textarea id="answerText" placeholder="Ваш ответ..."></textarea>
+        <button onclick="sendAnswer()">Отправить</button>
+    </div>
+
     <script>
-        function toggleCamera(id) {
-            const iframe = document.getElementById(id);
-            iframe.style.display = iframe.style.display === 'block' ? 'none' : 'block';
+        const questions = [
+            'Какая достопримечательность в Анапе вдохновляет вас больше всего?',
+            'Какой пляж Анапы вам нравится больше всего?',
+            'Ваше самое яркое воспоминание о закате в Анапе?',
+            'Какие активности на море вы предпочитаете: серфинг, дайвинг или плавание?',
+            'Какой ресторан или кафе в Анапе вы рекомендуете?',
+            'Что посоветуете посетить туристам в Анапе?',
+            'Какую местную еду стоит попробовать в Анапе?',
+            'Опишите самый лучший момент, который вы провели на отдыхе в Анапе.',
+            'Что делает отдых в Анапе для вас особенным?',
+            'Какой сувенир из Анапы вам больше всего понравился?',
+            'Какие природные красоты Анапы вас поразили?',
+            'Есть ли традиции, которые вы узнали в Анапе?',
+            'Что бы вы хотели добавить к курортной инфраструктуре Анапы?',
+            'Как бы вы описали атмосферу Анапы одним словом?',
+            'Что вас больше всего удивило во время вашего визита в Анапу?'
+        ];
+
+        const questionText = document.getElementById('questionText');
+        const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
+        questionText.innerText = randomQuestion;
+
+        function sendAnswer() {
+            const answer = document.getElementById('answerText').value;
+
+            if (!answer.trim()) {
+                alert('Пожалуйста, введите ответ.');
+                return;
+            }
+
+            // Показать сообщение благодарности
+            alert('Спасибо за Ваш ответ, Ваше мнение важно для нас!');
+
+            // Скрыть окно вопроса
+            document.getElementById('questionBox').style.display = 'none';
+
+            // Очищение поля ответа
+            document.getElementById('answerText').value = '';
+        }
+
+        // Функция для отображения камеры
+        function toggleCamera(cameraId) {
+            const iframe = document.getElementById(cameraId);
+            iframe.style.display = iframe.style.display === 'none' ? 'block' : 'none';
         }
     </script>
 </body>
 </html>
+
 
 
 
